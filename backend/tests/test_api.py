@@ -145,3 +145,14 @@ def test_pagination_and_completed_filter(client: TestClient) -> None:
     assert len(incomplete_only.json()) == 3
     assert all(task["completed"] is True for task in completed_only.json())
     assert all(task["completed"] is False for task in incomplete_only.json())
+
+
+def test_static_frontend_is_served(client: TestClient) -> None:
+    index_response = client.get("/")
+    assert index_response.status_code == 200
+    assert "text/html" in index_response.headers["content-type"]
+    assert "FastAPI Task Manager" in index_response.text
+
+    config_response = client.get("/config.js")
+    assert config_response.status_code == 200
+    assert 'API_BASE_URL: ""' in config_response.text
