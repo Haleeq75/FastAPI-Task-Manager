@@ -125,7 +125,7 @@ function App() {
         throw new Error("Login succeeded but no token returned.");
       }
       localStorage.setItem(TOKEN_KEY, token);
-      setStatus(setLoginMessage, "Login successful. JWT stored in localStorage.", "success");
+      setStatus(setLoginMessage, "Login successful!", "success");
       setLoginData({ username: "", password: "" });
       await listTasks();
     } catch (error) {
@@ -193,7 +193,7 @@ function App() {
     <main className="container">
       <header className="header">
         <h1>FastAPI Task Manager</h1>
-        <p className="subheading">Simple responsive frontend for auth + task CRUD (React)</p>
+        <p className="subheading">Simple Responsive Frontend for Authorization and Task CRUD Operation</p>
       </header>
 
       <section className="panel" id="backend-status-panel">
@@ -262,7 +262,7 @@ function App() {
           </label>
           <button type="submit">Login</button>
           <p className={`status ${loginMessage.type}`.trim()}>{loginMessage.text}</p>
-          <p className="muted small">JWT stored in localStorage key <code>{TOKEN_KEY}</code>.</p>
+  
           <button className="secondary" type="button" onClick={logoutUser}>Logout</button>
         </form>
       </section>
