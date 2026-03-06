@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FastAPI Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>FastAPI Task Manager</h1>
+        <p class="subheading">Simple responsive frontend for auth + task CRUD</p>
+      </header>
+
+      <section class="panel" id="backend-status-panel">
+        <div class="row between wrap">
+          <div>
+            <h2>Backend Connection</h2>
+            <p class="muted">Current API Base URL: <code id="api-base-url"></code></p>
+          </div>
+          <button id="verify-backend-btn" type="button">Verify API URL</button>
+        </div>
+        <p id="backend-status" class="status"></p>
+      </section>
+
+      <section class="panel auth-grid">
+        <form id="register-form" class="form-card">
+          <h2>Registration</h2>
+          <label>
+            Username
+            <input name="username" type="text" autocomplete="username" required />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" autocomplete="new-password" required />
+          </label>
+          <button type="submit">Register</button>
+          <p id="register-message" class="status"></p>
+        </form>
+
+        <form id="login-form" class="form-card">
+          <h2>Login</h2>
+          <label>
+            Username
+            <input name="username" type="text" autocomplete="username" required />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button type="submit">Login</button>
+          <p id="login-message" class="status"></p>
+          <p class="muted small">JWT stored in localStorage key <code>task_manager_token</code>.</p>
+          <button id="logout-btn" class="secondary" type="button">Logout</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <form id="create-task-form">
+          <h2>Create Task</h2>
+          <div class="row wrap gap-sm">
+            <label class="grow">
+              Title
+              <input name="title" type="text" maxlength="200" required />
+            </label>
+            <button type="submit">Create</button>
+          </div>
+          <p id="create-task-message" class="status"></p>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="row between wrap">
+          <h2>List Tasks</h2>
+          <button id="refresh-tasks-btn" type="button">Refresh Tasks</button>
+        </div>
+        <p id="list-task-message" class="status"></p>
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
